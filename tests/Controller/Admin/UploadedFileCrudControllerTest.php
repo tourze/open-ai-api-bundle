@@ -111,8 +111,7 @@ final class UploadedFileCrudControllerTest extends AbstractEasyAdminControllerTe
 
     public function testListAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $client->request('GET', '/admin/openai/file');
         $this->assertSame(200, $client->getResponse()->getStatusCode());
@@ -121,8 +120,7 @@ final class UploadedFileCrudControllerTest extends AbstractEasyAdminControllerTe
 
     public function testNewAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $client->request('GET', '/admin/openai/file/new');
         $this->assertSame(200, $client->getResponse()->getStatusCode());
@@ -131,8 +129,7 @@ final class UploadedFileCrudControllerTest extends AbstractEasyAdminControllerTe
 
     public function testCreateFile(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $file = new UploadedFile();
         $file->setFileId('test-file-create');
@@ -153,8 +150,7 @@ final class UploadedFileCrudControllerTest extends AbstractEasyAdminControllerTe
 
     public function testEditAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $file = new UploadedFile();
         $file->setFileId('test-file-edit');
@@ -174,8 +170,7 @@ final class UploadedFileCrudControllerTest extends AbstractEasyAdminControllerTe
 
     public function testDetailAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $expiresAt = new \DateTimeImmutable('+30 days');
         $file = new UploadedFile();
@@ -200,8 +195,7 @@ final class UploadedFileCrudControllerTest extends AbstractEasyAdminControllerTe
 
     public function testDeleteFile(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $file = new UploadedFile();
         $file->setFileId('test-file-delete');
@@ -254,8 +248,7 @@ final class UploadedFileCrudControllerTest extends AbstractEasyAdminControllerTe
 
     public function testFileOperations(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $file1 = new UploadedFile();
         $file1->setFileId('operation-test-1');
@@ -290,8 +283,7 @@ final class UploadedFileCrudControllerTest extends AbstractEasyAdminControllerTe
 
     public function testHumanReadableSize(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         // 测试不同文件大小的显示
         $smallFile = new UploadedFile();
@@ -320,8 +312,7 @@ final class UploadedFileCrudControllerTest extends AbstractEasyAdminControllerTe
 
     public function testValidationErrors(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $crawler = $client->request('GET', '/admin/openai/file/new');
         $this->assertSame(200, $client->getResponse()->getStatusCode());

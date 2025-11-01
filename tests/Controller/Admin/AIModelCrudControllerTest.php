@@ -111,8 +111,7 @@ final class AIModelCrudControllerTest extends AbstractEasyAdminControllerTestCas
 
     public function testListAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $client->request('GET', '/admin/openai/aimodel');
         $this->assertSame(200, $client->getResponse()->getStatusCode());
@@ -121,8 +120,7 @@ final class AIModelCrudControllerTest extends AbstractEasyAdminControllerTestCas
 
     public function testNewAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $client->request('GET', '/admin/openai/aimodel/new');
         $this->assertSame(200, $client->getResponse()->getStatusCode());
@@ -131,8 +129,7 @@ final class AIModelCrudControllerTest extends AbstractEasyAdminControllerTestCas
 
     public function testCreateModel(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $model = new AIModel();
         $model->setModelId('test-model-create');
@@ -155,8 +152,7 @@ final class AIModelCrudControllerTest extends AbstractEasyAdminControllerTestCas
 
     public function testEditAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $model = new AIModel();
         $model->setModelId('test-model-edit');
@@ -175,8 +171,7 @@ final class AIModelCrudControllerTest extends AbstractEasyAdminControllerTestCas
 
     public function testDetailAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $model = new AIModel();
         $model->setModelId('test-model-detail');
@@ -201,8 +196,7 @@ final class AIModelCrudControllerTest extends AbstractEasyAdminControllerTestCas
 
     public function testDeleteModel(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $model = new AIModel();
         $model->setModelId('test-model-delete');
@@ -254,8 +248,7 @@ final class AIModelCrudControllerTest extends AbstractEasyAdminControllerTestCas
 
     public function testBasicCrudOperations(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $model1 = new AIModel();
         $model1->setModelId('crud-test-1');
@@ -288,8 +281,7 @@ final class AIModelCrudControllerTest extends AbstractEasyAdminControllerTestCas
 
     public function testValidationErrors(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         // 测试创建时的验证错误
         $crawler = $client->request('GET', '/admin/openai/aimodel/new');
@@ -321,8 +313,7 @@ final class AIModelCrudControllerTest extends AbstractEasyAdminControllerTestCas
 
     public function testCreateWithInvalidData(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $crawler = $client->request('GET', '/admin/openai/aimodel/new');
         $this->assertSame(200, $client->getResponse()->getStatusCode());
@@ -393,8 +384,7 @@ final class AIModelCrudControllerTest extends AbstractEasyAdminControllerTestCas
 
     public function testEditWithValidationErrors(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         // 先创建一个模型
         $model = new AIModel();

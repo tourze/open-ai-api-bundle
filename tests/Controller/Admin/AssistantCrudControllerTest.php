@@ -118,8 +118,7 @@ final class AssistantCrudControllerTest extends AbstractEasyAdminControllerTestC
 
     public function testListAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $client->request('GET', '/admin/openai/assistant');
         $this->assertSame(200, $client->getResponse()->getStatusCode());
@@ -128,8 +127,7 @@ final class AssistantCrudControllerTest extends AbstractEasyAdminControllerTestC
 
     public function testNewAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $client->request('GET', '/admin/openai/assistant/new');
         $this->assertSame(200, $client->getResponse()->getStatusCode());
@@ -138,8 +136,7 @@ final class AssistantCrudControllerTest extends AbstractEasyAdminControllerTestC
 
     public function testCreateAssistant(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $assistant = new Assistant();
         $assistant->setAssistantId('test-asst-create');
@@ -164,8 +161,7 @@ final class AssistantCrudControllerTest extends AbstractEasyAdminControllerTestC
 
     public function testEditAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $assistant = new Assistant();
         $assistant->setAssistantId('test-asst-edit');
@@ -185,8 +181,7 @@ final class AssistantCrudControllerTest extends AbstractEasyAdminControllerTestC
 
     public function testDetailAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $assistant = new Assistant();
         $assistant->setAssistantId('test-asst-detail');
@@ -220,8 +215,7 @@ final class AssistantCrudControllerTest extends AbstractEasyAdminControllerTestC
 
     public function testDeleteAssistant(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $assistant = new Assistant();
         $assistant->setAssistantId('test-asst-delete');
@@ -274,8 +268,7 @@ final class AssistantCrudControllerTest extends AbstractEasyAdminControllerTestC
 
     public function testAssistantOperations(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $assistant1 = new Assistant();
         $assistant1->setAssistantId('operation-test-1');
@@ -310,8 +303,7 @@ final class AssistantCrudControllerTest extends AbstractEasyAdminControllerTestC
 
     public function testAssistantTools(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $assistant = new Assistant();
         $assistant->setAssistantId('tools-test');
@@ -349,8 +341,7 @@ final class AssistantCrudControllerTest extends AbstractEasyAdminControllerTestC
 
     public function testAssistantMetadata(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $assistant = new Assistant();
         $assistant->setAssistantId('metadata-test');
@@ -379,8 +370,7 @@ final class AssistantCrudControllerTest extends AbstractEasyAdminControllerTestC
 
     public function testValidationErrors(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         // 测试创建时的验证错误
         $crawler = $client->request('GET', '/admin/openai/assistant/new');
@@ -448,8 +438,7 @@ final class AssistantCrudControllerTest extends AbstractEasyAdminControllerTestC
 
     public function testCreateWithInvalidData(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $form = $this->getNewAssistantForm($client);
         $this->fillFormWithInvalidData($form);
@@ -547,8 +536,7 @@ final class AssistantCrudControllerTest extends AbstractEasyAdminControllerTestC
 
     public function testEditWithValidationErrors(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         // 先创建一个助手
         $assistant = new Assistant();

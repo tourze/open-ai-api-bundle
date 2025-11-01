@@ -101,8 +101,7 @@ final class ThreadCrudControllerTest extends AbstractEasyAdminControllerTestCase
 
     public function testListAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $client->request('GET', '/admin/openai/thread');
         $this->assertSame(200, $client->getResponse()->getStatusCode());
@@ -111,8 +110,7 @@ final class ThreadCrudControllerTest extends AbstractEasyAdminControllerTestCase
 
     public function testNewAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $client->request('GET', '/admin/openai/thread/new');
         $this->assertSame(200, $client->getResponse()->getStatusCode());
@@ -121,8 +119,7 @@ final class ThreadCrudControllerTest extends AbstractEasyAdminControllerTestCase
 
     public function testCreateThread(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $thread = new Thread();
         $thread->setThreadId('test-thread-create');
@@ -144,8 +141,7 @@ final class ThreadCrudControllerTest extends AbstractEasyAdminControllerTestCase
 
     public function testEditAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $thread = new Thread();
         $thread->setThreadId('test-thread-edit');
@@ -165,8 +161,7 @@ final class ThreadCrudControllerTest extends AbstractEasyAdminControllerTestCase
 
     public function testDetailAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $thread = new Thread();
         $thread->setThreadId('test-thread-detail');
@@ -200,8 +195,7 @@ final class ThreadCrudControllerTest extends AbstractEasyAdminControllerTestCase
 
     public function testDeleteThread(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $thread = new Thread();
         $thread->setThreadId('test-thread-delete');
@@ -254,8 +248,7 @@ final class ThreadCrudControllerTest extends AbstractEasyAdminControllerTestCase
 
     public function testThreadOperations(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $thread1 = new Thread();
         $thread1->setThreadId('operation-test-1');
@@ -288,8 +281,7 @@ final class ThreadCrudControllerTest extends AbstractEasyAdminControllerTestCase
 
     public function testThreadWithoutTitle(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $thread = new Thread();
         $thread->setThreadId('test-thread-no-title');
@@ -309,8 +301,7 @@ final class ThreadCrudControllerTest extends AbstractEasyAdminControllerTestCase
 
     public function testThreadMetadata(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $thread = new Thread();
         $thread->setThreadId('metadata-test');
@@ -349,8 +340,7 @@ final class ThreadCrudControllerTest extends AbstractEasyAdminControllerTestCase
 
     public function testThreadToolResources(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $thread = new Thread();
         $thread->setThreadId('tool-resources-test');
@@ -396,8 +386,7 @@ final class ThreadCrudControllerTest extends AbstractEasyAdminControllerTestCase
 
     public function testValidationErrors(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $crawler = $client->request('GET', '/admin/openai/thread/new');
         $this->assertSame(200, $client->getResponse()->getStatusCode());

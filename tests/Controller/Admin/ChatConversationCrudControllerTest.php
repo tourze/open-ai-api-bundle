@@ -99,8 +99,7 @@ final class ChatConversationCrudControllerTest extends AbstractEasyAdminControll
 
     public function testListAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $client->request('GET', '/admin/openai/chatconversation');
         $this->assertSame(200, $client->getResponse()->getStatusCode());
@@ -115,8 +114,7 @@ final class ChatConversationCrudControllerTest extends AbstractEasyAdminControll
 
     public function testNewAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $client->request('GET', '/admin/openai/chatconversation/new');
         $this->assertSame(200, $client->getResponse()->getStatusCode());
@@ -125,8 +123,7 @@ final class ChatConversationCrudControllerTest extends AbstractEasyAdminControll
 
     public function testCreateConversation(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         // 直接通过数据库创建对话来测试功能
         $conversation = new ChatConversation();
@@ -154,8 +151,7 @@ final class ChatConversationCrudControllerTest extends AbstractEasyAdminControll
 
     public function testEditAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         // 创建对话
         $conversation = new ChatConversation();
@@ -178,8 +174,7 @@ final class ChatConversationCrudControllerTest extends AbstractEasyAdminControll
 
     public function testUpdateConversation(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         // 创建对话
         $conversation = new ChatConversation();
@@ -217,8 +212,7 @@ final class ChatConversationCrudControllerTest extends AbstractEasyAdminControll
 
     public function testDetailAction(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         // 创建对话
         $conversation = new ChatConversation();
@@ -246,8 +240,7 @@ final class ChatConversationCrudControllerTest extends AbstractEasyAdminControll
 
     public function testDeleteConversation(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         // 创建对话
         $conversation = new ChatConversation();
@@ -343,8 +336,7 @@ final class ChatConversationCrudControllerTest extends AbstractEasyAdminControll
 
     public function testSearchFilters(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         // 创建测试数据
         $conversation1 = new ChatConversation();
@@ -378,8 +370,7 @@ final class ChatConversationCrudControllerTest extends AbstractEasyAdminControll
 
     public function testValidationErrors(): void
     {
-        $client = self::createClientWithDatabase();
-        $this->loginAsAdmin($client);
+        $client = self::createAuthenticatedClient();
 
         $crawler = $client->request('GET', '/admin/openai/chatconversation/new');
         $this->assertSame(200, $client->getResponse()->getStatusCode());
