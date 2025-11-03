@@ -15,6 +15,7 @@ use Tourze\OpenAiApiBundle\Repository\ThreadRepository;
 use Tourze\PHPUnitSymfonyKernelTest\AbstractRepositoryTestCase;
 
 /**
+ * @template TEntity of Thread
  * @internal
  */
 #[CoversClass(ThreadRepository::class)]

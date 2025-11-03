@@ -17,6 +17,7 @@ use Tourze\OpenAiApiBundle\Entity\Thread;
 use Tourze\OpenAiApiBundle\Entity\UploadedFile;
 use Tourze\OpenAiApiBundle\Service\AdminMenu;
 use Tourze\PHPUnitSymfonyWebTest\AbstractEasyAdminMenuTestCase;
+use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * @internal
@@ -25,7 +26,7 @@ use Tourze\PHPUnitSymfonyWebTest\AbstractEasyAdminMenuTestCase;
 #[RunTestsInSeparateProcesses]
 final class AdminMenuTest extends AbstractEasyAdminMenuTestCase
 {
-    private LinkGeneratorInterface $linkGenerator;
+    private LinkGeneratorInterface&MockObject $linkGenerator;
 
     private AdminMenu $adminMenu;
 
@@ -58,11 +59,9 @@ final class AdminMenuTest extends AbstractEasyAdminMenuTestCase
             ->willReturn($openaiMenu)
         ;
 
-        $linkGeneratorExpects = $this->linkGenerator->expects(self::exactly(5));
-        /** @phpstan-var InvocationMocker $linkGeneratorExpects */
-        $linkGeneratorWithMethod = $linkGeneratorExpects->method('getCurdListPage');
-        /** @phpstan-var InvocationMocker $linkGeneratorWithMethod */
-        $linkGeneratorWithMethod->willReturnMap([
+        $this->linkGenerator->expects(self::exactly(5))
+            ->method('getCurdListPage')
+            ->willReturnMap([
             [ChatConversation::class, '/admin/openai/conversation'],
             [AIModel::class, '/admin/openai/aimodel'],
             [UploadedFile::class, '/admin/openai/file'],
@@ -99,11 +98,9 @@ final class AdminMenuTest extends AbstractEasyAdminMenuTestCase
             ->method('addChild')
         ;
 
-        $linkGeneratorExpects = $this->linkGenerator->expects(self::exactly(5));
-        /** @phpstan-var InvocationMocker $linkGeneratorExpects */
-        $linkGeneratorWithMethod = $linkGeneratorExpects->method('getCurdListPage');
-        /** @phpstan-var InvocationMocker $linkGeneratorWithMethod */
-        $linkGeneratorWithMethod->willReturnMap([
+        $this->linkGenerator->expects(self::exactly(5))
+            ->method('getCurdListPage')
+            ->willReturnMap([
             [ChatConversation::class, '/admin/openai/conversation'],
             [AIModel::class, '/admin/openai/aimodel'],
             [UploadedFile::class, '/admin/openai/file'],

@@ -430,7 +430,7 @@ final class ChatConversationCrudControllerTest extends AbstractEasyAdminControll
             );
         } else {
             // 有验证错误，这是期望的行为
-            $this->assertTrue($hasValidationError, 'Should contain validation error messages');
+            // $hasValidationError is already true due to the if condition, no need to assert it
         }
     }
 }

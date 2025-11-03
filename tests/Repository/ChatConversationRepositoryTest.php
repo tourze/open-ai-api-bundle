@@ -13,6 +13,7 @@ use Tourze\OpenAiApiBundle\Repository\ChatConversationRepository;
 use Tourze\PHPUnitSymfonyKernelTest\AbstractRepositoryTestCase;
 
 /**
+ * @template TEntity of ChatConversation
  * @internal
  */
 #[CoversClass(ChatConversationRepository::class)]

@@ -13,6 +13,7 @@ use Tourze\OpenAiApiBundle\Repository\AIModelRepository;
 use Tourze\PHPUnitSymfonyKernelTest\AbstractRepositoryTestCase;
 
 /**
+ * @template TEntity of AIModel
  * @internal
  */
 #[CoversClass(AIModelRepository::class)]

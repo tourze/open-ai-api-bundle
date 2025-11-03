@@ -371,7 +371,7 @@ final class AIModelCrudControllerTest extends AbstractEasyAdminControllerTestCas
         if ($hasValidationError) {
             // 有验证错误，状态码应该是200或422
             $this->assertContains($statusCode, [200, 422], 'Expected validation error response');
-            $this->assertTrue($hasValidationError, 'Should contain validation error messages');
+            // $hasValidationError is already true due to the if condition, no need to assert it
         } else {
             // 没有验证错误，表单成功提交，显示成功页面
             $this->assertSame(200, $statusCode, 'Expected successful response with status 200');
@@ -447,7 +447,7 @@ final class AIModelCrudControllerTest extends AbstractEasyAdminControllerTestCas
         if ($hasValidationError) {
             // 有验证错误，状态码应该是200或422
             $this->assertContains($statusCode, [200, 422], 'Expected validation error response');
-            $this->assertTrue($hasValidationError, 'Should contain validation error messages');
+            // $hasValidationError is already true due to the if condition, no need to assert it
         } else {
             // 没有验证错误，表单成功提交，显示成功页面
             $this->assertSame(200, $statusCode, 'Expected successful response with status 200');

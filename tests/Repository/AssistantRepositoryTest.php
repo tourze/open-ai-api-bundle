@@ -13,6 +13,7 @@ use Tourze\OpenAiApiBundle\Repository\AssistantRepository;
 use Tourze\PHPUnitSymfonyKernelTest\AbstractRepositoryTestCase;
 
 /**
+ * @template TEntity of Assistant
  * @internal
  */
 #[CoversClass(AssistantRepository::class)]

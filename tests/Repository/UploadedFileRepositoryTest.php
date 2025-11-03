@@ -14,6 +14,7 @@ use Tourze\OpenAiApiBundle\Repository\UploadedFileRepository;
 use Tourze\PHPUnitSymfonyKernelTest\AbstractRepositoryTestCase;
 
 /**
+ * @template TEntity of UploadedFile
  * @internal
  */
 #[CoversClass(UploadedFileRepository::class)]
@@ -691,11 +692,19 @@ final class UploadedFileRepositoryTest extends AbstractRepositoryTestCase
     {
         $lowerKeyword = strtolower($keyword);
         foreach ($results as $result) {
-            $containsInFilename = str_contains(strtolower($result->getFilename()), $lowerKeyword);
+            $containsInFilename = str_contains(
+                strtolower($result->getFilename()),
+                $lowerKeyword
+            );
             $containsInDescription = null !== $result->getDescription()
-                && str_contains(strtolower($result->getDescription()), $lowerKeyword);
-            $this->assertTrue($containsInFilename || $containsInDescription,
-                "Search result should contain \"{$keyword}\" in filename or description");
+            && str_contains(
+                strtolower($result->getDescription()),
+                $lowerKeyword
+            );
+            $this->assertTrue(
+                $containsInFilename || $containsInDescription,
+                "Search result should contain \"{$keyword}\" in filename or description"
+            );
         }
     }
 
