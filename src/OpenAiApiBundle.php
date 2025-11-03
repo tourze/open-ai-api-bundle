@@ -9,6 +9,7 @@ use EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle;
 use Symfony\Bundle\TwigBundle\TwigBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Tourze\BundleDependency\BundleDependencyInterface;
+use Tourze\EasyAdminMenuBundle\EasyAdminMenuBundle;
 
 class OpenAiApiBundle extends Bundle implements BundleDependencyInterface
 {
@@ -21,6 +22,7 @@ class OpenAiApiBundle extends Bundle implements BundleDependencyInterface
             DoctrineBundle::class => [],
             EasyAdminBundle::class => [],
             TwigBundle::class => [],
+            EasyAdminMenuBundle::class => ['all' => true],
         ];
     }
 }
