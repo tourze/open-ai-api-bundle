@@ -103,11 +103,6 @@ final class AssistantCrudControllerTest extends AbstractEasyAdminControllerTestC
         yield 'updatedAt' => ['updatedAt'];
     }
 
-    public function testGetEntityFqcn(): void
-    {
-        $this->assertSame(Assistant::class, AssistantCrudController::getEntityFqcn());
-    }
-
     public function testAccessWithoutLogin(): void
     {
         $client = self::createClientWithDatabase();

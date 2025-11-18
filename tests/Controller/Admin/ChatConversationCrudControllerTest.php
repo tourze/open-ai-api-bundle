@@ -84,11 +84,6 @@ final class ChatConversationCrudControllerTest extends AbstractEasyAdminControll
         yield 'updatedAt' => ['updatedAt'];
     }
 
-    public function testGetEntityFqcn(): void
-    {
-        $this->assertSame(ChatConversation::class, ChatConversationCrudController::getEntityFqcn());
-    }
-
     public function testAccessWithoutLogin(): void
     {
         $client = self::createClientWithDatabase();

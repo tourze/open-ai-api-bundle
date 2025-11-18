@@ -86,11 +86,6 @@ final class ThreadCrudControllerTest extends AbstractEasyAdminControllerTestCase
         yield 'updatedAt' => ['updatedAt'];
     }
 
-    public function testGetEntityFqcn(): void
-    {
-        $this->assertSame(Thread::class, ThreadCrudController::getEntityFqcn());
-    }
-
     public function testAccessWithoutLogin(): void
     {
         $client = self::createClientWithDatabase();

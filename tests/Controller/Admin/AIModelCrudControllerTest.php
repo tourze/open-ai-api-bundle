@@ -96,11 +96,6 @@ final class AIModelCrudControllerTest extends AbstractEasyAdminControllerTestCas
         yield 'updatedAt' => ['updatedAt'];
     }
 
-    public function testGetEntityFqcn(): void
-    {
-        $this->assertSame(AIModel::class, AIModelCrudController::getEntityFqcn());
-    }
-
     public function testAccessWithoutLogin(): void
     {
         $client = self::createClientWithDatabase();

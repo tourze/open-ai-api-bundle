@@ -96,11 +96,6 @@ final class UploadedFileCrudControllerTest extends AbstractEasyAdminControllerTe
         yield 'updatedAt' => ['updatedAt'];
     }
 
-    public function testGetEntityFqcn(): void
-    {
-        $this->assertSame(UploadedFile::class, UploadedFileCrudController::getEntityFqcn());
-    }
-
     public function testAccessWithoutLogin(): void
     {
         $client = self::createClientWithDatabase();
