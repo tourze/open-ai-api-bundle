@@ -47,7 +47,7 @@ class Thread
     private \DateTimeImmutable $updatedAt;
 
     #[ORM\Column(type: Types::INTEGER, options: ['comment' => '消息数量'])]
-    #[Assert\Range(min: 0, max: 10000, minMessage: '消息数量不能为负数', maxMessage: '消息数量不能超过10000条')]
+    #[Assert\Range(notInRangeMessage: '消息数量必须在0到10000条之间', min: 0, max: 10000)]
     private int $messageCount = 0;
 
     #[ORM\Column(type: Types::STRING, length: 100, nullable: true, options: ['comment' => '关联的助手ID'])]

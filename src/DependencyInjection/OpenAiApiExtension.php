@@ -6,7 +6,7 @@ namespace Tourze\OpenAiApiBundle\DependencyInjection;
 
 use Tourze\SymfonyDependencyServiceLoader\AutoExtension;
 
-class OpenAiApiExtension extends AutoExtension
+final class OpenAiApiExtension extends AutoExtension
 {
     protected function getConfigDir(): string
     {

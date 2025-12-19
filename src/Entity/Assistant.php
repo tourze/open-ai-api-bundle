@@ -58,11 +58,11 @@ class Assistant
     private AssistantStatus $status = AssistantStatus::Active;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: 2, nullable: true, options: ['comment' => '温度参数'])]
-    #[Assert\Range(min: 0, max: 2, minMessage: '温度参数不能小于0', maxMessage: '温度参数不能大于2')]
+    #[Assert\Range(notInRangeMessage: '温度参数必须在0到2之间', min: 0, max: 2)]
     private ?string $temperature = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: 2, nullable: true, options: ['comment' => 'Top P参数'])]
-    #[Assert\Range(min: 0, max: 1, minMessage: 'Top P参数不能小于0', maxMessage: 'Top P参数不能大于1')]
+    #[Assert\Range(notInRangeMessage: 'Top P参数必须在0到1之间', min: 0, max: 1)]
     private ?string $topP = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, options: ['comment' => '创建时间'])]

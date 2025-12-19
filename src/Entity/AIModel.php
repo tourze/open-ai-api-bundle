@@ -44,15 +44,15 @@ class AIModel
     private ModelStatus $status = ModelStatus::Available;
 
     #[ORM\Column(type: Types::INTEGER, nullable: true, options: ['comment' => '上下文窗口大小'])]
-    #[Assert\Range(min: 1, max: 1000000, minMessage: '上下文窗口大小至少为1', maxMessage: '上下文窗口大小不能超过1000000')]
+    #[Assert\Range(notInRangeMessage: '上下文窗口大小必须在1到1000000之间', min: 1, max: 1000000)]
     private ?int $contextWindow = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 6, nullable: true, options: ['comment' => '输入Token价格'])]
-    #[Assert\Range(min: 0, max: 999999.999999, minMessage: '输入Token价格不能为负数', maxMessage: '输入Token价格超出范围')]
+    #[Assert\Range(notInRangeMessage: '输入Token价格必须在0到999999.999999之间', min: 0, max: 999999.999999)]
     private ?string $inputPricePerToken = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 6, nullable: true, options: ['comment' => '输出Token价格'])]
-    #[Assert\Range(min: 0, max: 999999.999999, minMessage: '输出Token价格不能为负数', maxMessage: '输出Token价格超出范围')]
+    #[Assert\Range(notInRangeMessage: '输出Token价格必须在0到999999.999999之间', min: 0, max: 999999.999999)]
     private ?string $outputPricePerToken = null;
 
     /** @var array<string> */

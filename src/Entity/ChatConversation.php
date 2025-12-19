@@ -41,11 +41,11 @@ class ChatConversation
     private ConversationStatus $status = ConversationStatus::Active;
 
     #[ORM\Column(type: Types::INTEGER, nullable: true, options: ['comment' => '总Token数量'])]
-    #[Assert\Range(min: 1, max: 10000000, minMessage: 'Token数量至少为1', maxMessage: 'Token数量不能超过10000000')]
+    #[Assert\Range(notInRangeMessage: 'Token数量必须在1到10000000之间', min: 1, max: 10000000)]
     private ?int $totalTokens = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 10, scale: 6, nullable: true, options: ['comment' => '费用'])]
-    #[Assert\Range(min: 0, max: 999999.999999, minMessage: '费用不能为负数', maxMessage: '费用超出范围')]
+    #[Assert\Range(notInRangeMessage: '费用必须在0到999999.999999之间', min: 0, max: 999999.999999)]
     private ?string $cost = null;
 
     #[ORM\Column(type: Types::DATETIME_IMMUTABLE, options: ['comment' => '创建时间'])]
@@ -61,7 +61,7 @@ class ChatConversation
     private ?string $systemPrompt = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: 2, nullable: true, options: ['comment' => '温度参数'])]
-    #[Assert\Range(min: 0, max: 2, minMessage: '温度参数不能小于0', maxMessage: '温度参数不能大于2')]
+    #[Assert\Range(notInRangeMessage: '温度参数必须在0到2之间', min: 0, max: 2)]
     private ?string $temperature = null;
 
     public function __construct()

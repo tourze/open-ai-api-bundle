@@ -36,7 +36,7 @@ class UploadedFile
 
     #[ORM\Column(type: Types::INTEGER, options: ['comment' => '文件大小（字节）'])]
     #[Assert\NotBlank(message: '文件大小不能为空')]
-    #[Assert\Range(min: 1, max: 10737418240, minMessage: '文件大小至少为1字节', maxMessage: '文件大小不能超过10GB')]
+    #[Assert\Range(notInRangeMessage: '文件大小必须在1字节到10GB之间', min: 1, max: 10737418240)]
     private int $bytes;
 
     #[ORM\Column(type: Types::STRING, length: 50, enumType: FileStatus::class, options: ['comment' => '文件状态'])]
